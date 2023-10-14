@@ -1,2 +1,2 @@
 # art3mis
-repo for the aet3mis lunar governance experiment
+repo for the art3mis lunar governance experiment
