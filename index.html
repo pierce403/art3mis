@@ -1,10 +1,31 @@
+<!DOCTYPE html>
 <html>
+
+<head>
+    <title>OPERATION ART3MIS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #game-container {
+            margin: 20px;
+        }
+    </style>
+    <script src="art3mis.js"></script>
+</head>
+
 <body>
-
-<br><br><br>
-<center>
-ART三MIS
-</center>
-
+    <div id="game-container">
+        <h1>OPERATION ART3MIS</h1>
+        <p>Congratulations citizen! You have been selected to operate your very own Lunar Von Neumann probe.</p>
+        <p>Solar Panel Output (W/m²): <span id="solar-panel-output">1361</span></p>
+        <p>Battery Capacity (Wh): <span id="battery-capacity">100</span></p>
+        <p>Battery Charge (Wh): <span id="battery-charge">0</span></p>
+        <p>Lunar Regolith (kg): <span id="lunar-regolith">0</span></p>
+        <button onclick="chargeBattery()">Charge Battery</button>
+        <button onclick="collectRegolith()">Collect Lunar Regolith</button>
+    </div>
 </body>
+
 </html>
