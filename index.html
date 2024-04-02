@@ -19,12 +19,20 @@
     <div id="game-container">
         <h1>OPERATION ART3MIS</h1>
         <p>Congratulations citizen! You have been selected to operate your very own Lunar Von Neumann probe.</p>
-        <p>Solar Panel Output (W/m²): <span id="solar-panel-output">1361</span></p>
+        <p>Solar Panel Output (W/m<sup>2</sup>): <span id="solar-panel-output">1361</span></p>
         <p>Battery Capacity (Wh): <span id="battery-capacity">100</span></p>
         <p>Battery Charge (Wh): <span id="battery-charge">0</span></p>
         <p>Lunar Regolith (kg): <span id="lunar-regolith">0</span></p>
-        <button onclick="chargeBattery()">Charge Battery</button>
+        <p>Lunar Regolith Capacity (kg): <span id="lunar-regolith-capacity">0</span></p>
+
+        <p>Silica (SiO<sub>2</sub>) (kg): <span id="silica">0</span></p>
+        <p>Ilmenite (FeTiO<sub>3</sub>) (kg): <span id="ilmenite">0</span></p>
+        <p>Anorthite (CaAl<sub>2</sub>Si<sub>2</sub>O<sub>8</sub>) (kg): <span id="anorthite">0</span></p>
+        <p>Olivine ((Mg,Fe)<sub>2</sub>SiO<sub>4</sub>) (kg): <span id="olivine">0</span></p>
+        <p>Pyroxene ((Ca,Mg,Fe,Al)<sub>2</sub>(Si,Al)<sub>2</sub>O<sub>6</sub>) (kg): <span id="pyroxene">0</span></p>
+
         <button onclick="collectRegolith()">Collect Lunar Regolith</button>
+        <button onclick="sortRegolith()">Sort Regolith</button>
     </div>
 </body>
 
