@@ -1,88 +1,176 @@
-let solarPanelOutput = 1361; // W/m², average solar constant at the Moon's surface
-let batteryCapacity = 100000; // Wh, arbitrary starting value 100 kwh starting battery
-let batteryCharge = 0; // Wh
-let lunarRegolith = 0; // kg
-let lunarRegolithCapacity = 100; // kg, arbitrary starting value 100 kg
+// Initialize arrays to store known materials and machines
+let knownMaterials = [];
+let knownMachines = [];
 
-let silica = 0; // kg
-let ilmenite = 0; // kg
-let anorthite = 0; // kg
-let olivine = 0; // kg
-let pyroxene = 0; // kg
+let batteryCapacity = 100000; // 1 MWh
+let batteryCharge = 0; // 0 MWh
+
+let ownedMachines = {};
+let ownedMaterials = {};
+
+// dict to track machines with auto-click enabled
+let autoClickMachines = {};
+
+// Load materials from the materials.json file
+function loadMaterials() {
+    fetch('materials.json')
+        .then(response => response.json())
+        .then(data => {
+            knownMaterials = data.materials;
+            displayMaterials(); // Display the materials once they are loaded
+        })
+        .catch(error => console.error('Error loading materials:', error));
+}
+
+// Load machines from the machines.json file
+function loadMachines() {
+    fetch('machines.json')
+        .then(response => response.json())
+        .then(data => {
+            knownMachines = data.machines;
+            displayMachines(); // Display the machines once they are loaded
+        })
+        .catch(error => console.error('Error loading machines:', error));
+}
+
+// Display materials as cards in the materials grid
+function displayMaterials() {
+    const materialsGrid = document.getElementById('materials-grid');
+    materialsGrid.innerHTML = ''; // Clear existing cards
+
+    knownMaterials.forEach(material => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        // Show the name, and the quantity if the material is owned. Also description of people hover over the name.
+        // If the material count is zero, or not in the dict, don't display the card.
+        // Get "unit" field from the json, assume kg if not present
+        // For example:  regolith (100 kg)
+        if (ownedMaterials[material.name] > 0) {
+            card.innerHTML = `<h3>${material.name} (${ownedMaterials[material.name]} ${material.unit || 'kg'})</h3>`;
+            materialsGrid.appendChild(card);
+        }
+    });
+}
+
+// Display machines as cards in the machines grid
+function displayMachines() {
+    const machinesGrid = document.getElementById('machines-grid');
+    machinesGrid.innerHTML = ''; // Clear existing cards
+
+    knownMachines.forEach(machine => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+            <h3>${machine.name}</h3>
+            <p>${machine.description}</p>
+            <p>Time: ${machine.time}</p>
+            <p>Energy: ${machine.energy}</p>
+            <p>Inputs: ${formatMaterials(machine.inputs)}</p>
+            <p>Outputs: ${formatMaterials(machine.outputs)}</p>
+        `;
+        // add execute button
+        const executeButton = document.createElement('button');
+        executeButton.innerText = 'Execute';
+        executeButton.onclick = () => executeMachine(machine);
+        card.appendChild(executeButton);
+
+        // add an auto-click button that can turn auto-click on and off
+        const autoClickButton = document.createElement('button');
+        // set name according to autoClickMachines[machine.name]
+        if (autoClickMachines[machine.name] == true) {
+            autoClickButton.innerText = 'Stop Auto-Click';
+        } else {
+            autoClickButton.innerText = 'Start Auto-Click';
+        }
+
+        autoClickButton.onclick = () => {
+            if (autoClickMachines[machine.name]) {
+                autoClickMachines[machine.name] = false;
+                autoClickButton.innerText = 'Start Auto-Click';
+            } else {
+                autoClickMachines[machine.name] = true;
+                autoClickButton.innerText = 'Stop Auto-Click';
+            }
+        };
+        card.appendChild(autoClickButton);
+
+        machinesGrid.appendChild(card);
+    });
+}
+
+// Helper function to format a list of materials for display
+function formatMaterials(materials) {
+    return materials.map(material => `${material.quantity} kg of ${material.material}`).join(', ');
+}
+
+// Load materials and machines when the page is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    loadMaterials();
+    loadMachines();
+});
+
+function step() {
+    let chargeAmount = ownedMaterials['solar-panel'] * 200; // 200 W per solar panel
+    batteryCharge = Math.min(batteryCharge + chargeAmount, batteryCapacity);
+    // update charge display
+    document.getElementById('battery-charge').innerText = batteryCharge;
+
+    // run machines that have auto-click enabled
+    for (const machineName in autoClickMachines) {
+        if (autoClickMachines[machineName]) {
+            const machine = knownMachines.find(machine => machine.name === machineName);
+            executeMachine(machine);
+        }
+    }
+
+    displayMaterials();
+    displayMachines();
+}
+
+// Run this every second
+setInterval(step, 1000); // Charge every 1000 milliseconds (1 second)
+
+// set up new game
+function newGame() {
+    ownedMaterials['solar-panel'] = 1;
+    ownedMaterials['regolith'] = 1000;
+    ownedMachines['regolith-collector'] = 1;
+    ownedMachines['regolith-sorter'] = 1;
+}
+newGame();
 
 function showMessage(message) {
     document.getElementById("message-box").innerText = message;
 }
 
-function chargeBattery() {
-    let chargeAmount = solarPanelOutput * 0.2; // 20% efficiency for solar panel
-    batteryCharge = Math.min(batteryCharge + chargeAmount, batteryCapacity);
-    updateDisplay();
-}
-
-// Charge the battery at a constant rate
-setInterval(chargeBattery, 1000); // Charge every 1000 milliseconds (1 second)
-
-function collectRegolith() {
-    if (lunarRegolith >= lunarRegolithCapacity) {
-        showMessage("Lunar regolith capacity is full!");
+function executeMachine(machine) {
+    // ensure that there is enough energy to run the machine
+    if (machine.energy > batteryCharge) {
+        showMessage(`Not enough energy to run ${machine.name}`);
         return;
     }
-    if (batteryCharge >= 100) {
-        batteryCharge -= 100;
-        lunarRegolith += 1; // Collect 1 kg of regolith per 100 Wh
-        updateDisplay();
-    } else {
-        showMessage("Not enough battery charge to collect regolith!");
-    }
-}
+    batteryCharge -= machine.energy;
 
-function updateDisplay() {
-    document.getElementById("solar-panel-output").innerText = solarPanelOutput;
-    document.getElementById("battery-capacity").innerText = batteryCapacity;
-    document.getElementById("battery-charge").innerText = batteryCharge.toFixed(2);
-    document.getElementById("lunar-regolith").innerText = lunarRegolith;
-    document.getElementById("lunar-regolith-capacity").innerText = lunarRegolithCapacity;
-    document.getElementById("silica").innerText = silica;
-    document.getElementById("ilmenite").innerText = ilmenite;
-    document.getElementById("anorthite").innerText = anorthite;
-    document.getElementById("olivine").innerText = olivine;
-    document.getElementById("pyroxene").innerText = pyroxene;
-
-    // Show or hide the sort regolith button
-    if (lunarRegolith >= 10) {
-        document.getElementById("sort-regolith-button").classList.remove("hidden");
-    } else {
-        document.getElementById("sort-regolith-button").classList.add("hidden");
+    if (machine.inputs) {
+        for (const input of machine.inputs) {
+            if (!ownedMaterials[input.material] || ownedMaterials[input.material] < input.quantity) {
+                showMessage(`Not enough ${input.material} to run ${machine.name}`);
+                return;
+            }
+        }
+        for (const input of machine.inputs) {
+            ownedMaterials[input.material] -= input.quantity;
+        }
     }
-
-    // Show or hide the materials container
-    if (silica > 0 || ilmenite > 0 || anorthite > 0 || olivine > 0 || pyroxene > 0) {
-        document.getElementById("materials-container").classList.remove("hidden");
-    } else {
-        document.getElementById("materials-container").classList.add("hidden");
+    if (machine.outputs) {
+        for (const output of machine.outputs) {
+            if (!ownedMaterials[output.material]) {
+                ownedMaterials[output.material] = 0;
+            }
+            ownedMaterials[output.material] += output.quantity;
+        }
     }
-}
-
-function sortRegolith() {
-    // Make sure we have enough power to sort
-    if (batteryCharge >= 1000) {
-        batteryCharge -= 1000;
-    } else {
-        showMessage("Not enough battery charge to sort regolith!");
-        return;
-    }
-
-    // Sort 10 kg of regolith into 4 kg silica, 2 kg ilmenite, 2 kg anorthite, 1 kg olivine, 1 kg pyroxene
-    if (lunarRegolith >= 10) {
-        lunarRegolith -= 10;
-        silica += 4;
-        ilmenite += 2;
-        anorthite += 2;
-        olivine += 1;
-        pyroxene += 1;
-        updateDisplay();
-    } else {
-        showMessage("Not enough regolith to sort!");
-    }
+    showMessage(`Ran ${machine.name}`);
+    displayMaterials();
+    displayMachines();
 }

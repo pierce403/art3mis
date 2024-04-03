@@ -1,0 +1,73 @@
+{
+  "machines": [
+    {
+      "name": "Regolith Collector",
+      "description": "A machine used to collect lunar regolith from the Moon's surface.",
+      "inputs": [],
+      "outputs": [
+        {
+          "material": "regolith",
+          "quantity": 1
+        }
+      ],
+      "time": "1 hour",
+      "energy": "100"
+    },
+    {
+      "name": "Regolith Sorter",
+      "description": "A machine that sorts lunar regolith into its constituent materials.",
+      "inputs": [
+        {
+          "material": "regolith",
+          "quantity": 10
+        }
+      ],
+      "outputs": [
+        {
+          "material": "silica",
+          "quantity": 4
+        },
+        {
+          "material": "ilmenite",
+          "quantity": 2
+        },
+        {
+          "material": "anorthite",
+          "quantity": 2
+        },
+        {
+          "material": "olivine",
+          "quantity": 1
+        },
+        {
+          "material": "pyroxene",
+          "quantity": 1
+        }
+      ],
+      "time": "2 hours",
+      "energy": "500"
+    },
+    {
+      "name": "Solar Panel Fabricator",
+      "description": "A machine that manufactures solar panels using extracted materials.",
+      "inputs": [
+        {
+          "material": "silica",
+          "quantity": 10
+        },
+        {
+          "material": "anorthite",
+          "quantity": 5
+        }
+      ],
+      "outputs": [
+        {
+          "material": "solar-panel",
+          "quantity": 1
+        }
+      ],
+      "time": "5 hours",
+      "energy": "1000"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "materials": [
+    {
+      "name": "solar-panel",
+      "unit": "panel",
+      "description": "A device that converts sunlight into electrical energy, typically consisting of multiple photovoltaic cells arranged in a grid-like pattern."
+    },
+    {
+      "name": "regolith",
+      "description": "A layer of loose, heterogeneous material covering solid rock on the Moon's surface, composed of various minerals, dust, and small rocks."
+    },
+    {
+      "name": "silica",
+      "description": "A chemical compound made of silicon and oxygen, often found in quartz and other minerals, and used as a primary material for solar cells and glass."
+    },
+    {
+      "name": "ilmenite",
+      "description": "A titanium-iron oxide mineral found in lunar regolith, used as a source of titanium and as a potential material for oxygen extraction."
+    },
+    {
+      "name": "anorthite",
+      "description": "A calcium aluminum silicate mineral found in lunar rocks, used as a source of aluminum and as a component in the production of ceramics and glass."
+    },
+    {
+      "name": "olivine",
+      "description": "A magnesium iron silicate mineral commonly found in lunar basalts, used in various industrial applications and as a potential source of iron and magnesium."
+    },
+    {
+      "name": "pyroxene",
+      "description": "A group of silicate minerals found in lunar rocks, used in ceramics and as a source of magnesium and iron."
+    },
+    {
+      "name": "aluminum",
+      "description": "A lightweight, silver-white metal derived from minerals like anorthite, used in the construction of spacecraft and solar panel frames."
+    },
+    {
+      "name": "silicon",
+      "description": "A semiconductor material derived from silica, used in the production of solar cells and electronic devices."
+    }
+  ]
+}
