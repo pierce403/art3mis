@@ -66,7 +66,7 @@ function displayMachines() {
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
-            <h3>${machine.name}</h3>
+            <h3>${machine.display}</h3>
             <p>${machine.description}</p>
             <p>Time: ${machine.time}</p>
             <p>Energy: ${machine.energy}</p>
