@@ -154,7 +154,6 @@ function executeMachine(machine) {
         showMessage(`Not enough energy to run ${machine.name}`);
         return;
     }
-    batteryCharge -= machine.energy;
 
     if (machine.inputs) {
         for (const input of machine.inputs) {
@@ -175,6 +174,9 @@ function executeMachine(machine) {
             ownedMaterials[output.material] += output.quantity;
         }
     }
+
+    // update battery charge
+    batteryCharge -= machine.energy;
     showMessage(`Ran ${machine.name}`);
     displayMaterials();
     displayMachines();
