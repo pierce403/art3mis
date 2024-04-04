@@ -1,7 +1,8 @@
 {
   "machines": [
     {
-      "name": "Regolith Collector",
+      "name": "regolith-collector",
+      "display-name": "Regolith Collector",
       "description": "A machine used to collect lunar regolith from the Moon's surface.",
       "inputs": [],
       "outputs": [
@@ -10,11 +11,12 @@
           "quantity": 1
         }
       ],
-      "time": "1 hour",
-      "energy": "100"
+      "time": 3600,
+      "energy": 100
     },
     {
-      "name": "Regolith Sorter",
+      "name": "regolith-sorter",
+      "display-name": "Regolith Sorter",
       "description": "A machine that sorts lunar regolith into its constituent materials.",
       "inputs": [
         {
@@ -44,11 +46,12 @@
           "quantity": 1
         }
       ],
-      "time": "2 hours",
-      "energy": "500"
+      "time": 7200,
+      "energy": 500
     },
     {
-      "name": "Solar Panel Fabricator",
+      "name": "solar-panel-fabricator",
+      "display-name": "Solar Panel Fabricator",
       "description": "A machine that manufactures solar panels using extracted materials.",
       "inputs": [
         {
@@ -56,7 +59,7 @@
           "quantity": 10
         },
         {
-          "material": "anorthite",
+          "material": "aluminum",
           "quantity": 5
         }
       ],
@@ -66,8 +69,159 @@
           "quantity": 1
         }
       ],
-      "time": "5 hours",
-      "energy": "1000"
+      "time": 18000,
+      "energy": 1000
+    },
+    {
+      "name": "silica-blast-furnace",
+      "display-name": "Silica Blast Furnace",
+      "description": "A furnace that heats silica to extract silicon and oxygen.",
+      "inputs": [
+        {
+          "material": "silica",
+          "quantity": 10
+        }
+      ],
+      "outputs": [
+        {
+          "material": "silicon",
+          "quantity": 5
+        },
+        {
+          "material": "oxygen",
+          "quantity": 5
+        }
+      ],
+      "time": 18000,
+      "energy": 2000
+    },
+    {
+      "name": "ilmenite-blast-furnace",
+      "display-name": "Ilmenite Blast Furnace",
+      "description": "A furnace that heats ilmenite to extract iron, titanium, and oxygen.",
+      "inputs": [
+        {
+          "material": "ilmenite",
+          "quantity": 10
+        }
+      ],
+      "outputs": [
+        {
+          "material": "iron",
+          "quantity": 3
+        },
+        {
+          "material": "titanium",
+          "quantity": 3
+        },
+        {
+          "material": "oxygen",
+          "quantity": 4
+        }
+      ],
+      "time": 21600,
+      "energy": 2500
+    },
+    {
+      "name": "anorthite-blast-furnace",
+      "display-name": "Anorthite Blast Furnace",
+      "description": "A furnace that heats anorthite to extract calcium, aluminum, silicon, and oxygen.",
+      "inputs": [
+        {
+          "material": "anorthite",
+          "quantity": 10
+        }
+      ],
+      "outputs": [
+        {
+          "material": "calcium",
+          "quantity": 2
+        },
+        {
+          "material": "aluminum",
+          "quantity": 2
+        },
+        {
+          "material": "silicon",
+          "quantity": 2
+        },
+        {
+          "material": "oxygen",
+          "quantity": 4
+        }
+      ],
+      "time": 25200,
+      "energy": 3000
+    },
+    {
+      "name": "olivine-blast-furnace",
+      "display-name": "Olivine Blast Furnace",
+      "description": "A furnace that heats olivine to extract magnesium, iron, silicon, and oxygen.",
+      "inputs": [
+        {
+          "material": "olivine",
+          "quantity": 10
+        }
+      ],
+      "outputs": [
+        {
+          "material": "magnesium",
+          "quantity": 2
+        },
+        {
+          "material": "iron",
+          "quantity": 2
+        },
+        {
+          "material": "silicon",
+          "quantity": 2
+        },
+        {
+          "material": "oxygen",
+          "quantity": 4
+        }
+      ],
+      "time": 28800,
+      "energy": 3500
+    },
+    {
+      "name": "pyroxene-blast-furnace",
+      "display-name": "Pyroxene Blast Furnace",
+      "description": "A furnace that heats pyroxene to extract calcium, magnesium, iron, aluminum, silicon, and oxygen.",
+      "inputs": [
+        {
+          "material": "pyroxene",
+          "quantity": 10
+        }
+      ],
+      "outputs": [
+        {
+          "material": "calcium",
+          "quantity": 1
+        },
+        {
+          "material": "magnesium",
+          "quantity": 1
+        },
+        {
+          "material": "iron",
+          "quantity": 1
+        },
+        {
+          "material": "aluminum",
+          "quantity": 1
+        },
+        {
+          "material": "silicon",
+          "quantity": 2
+        },
+        {
+          "material": "oxygen",
+          "quantity": 4
+        }
+      ],
+      "time": 32400,
+      "energy": 4000
     }
   ]
 }
