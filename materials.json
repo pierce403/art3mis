@@ -2,69 +2,74 @@
   "materials": [
     {
       "name": "solar-panel",
-      "display-name": "Solar Panel",
+      "display": "Solar Panel",
       "unit": "panel",
       "description": "A device that converts sunlight into electrical energy, typically consisting of multiple photovoltaic cells arranged in a grid-like pattern."
     },
     {
       "name": "regolith",
-      "display-name": "Regolith",
+      "display": "Regolith",
       "description": "A layer of loose, heterogeneous material covering solid rock on the Moon's surface, composed of various minerals, dust, and small rocks."
     },
     {
       "name": "silica",
-      "display-name": "Silica (SiO₂)",
-      "description": "A chemical compound made of silicon and oxygen, often found in quartz and other minerals, and used as a primary material for solar cells and glass."
+      "display": "Silica",
+      "description": "A chemical compound made of silicon and oxygen (SiO₂), often found in quartz and other minerals, and used as a primary material for solar cells and glass."
     },
     {
       "name": "ilmenite",
-      "display-name": "Ilmenite (FeTiO₃)",
-      "description": "A titanium-iron oxide mineral found in lunar regolith, used as a source of titanium and as a potential material for oxygen extraction."
+      "display": "Ilmenite",
+      "description": "A titanium-iron oxide mineral (FeTiO₃) found in lunar regolith, used as a source of titanium and as a potential material for oxygen extraction."
     },
     {
       "name": "anorthite",
-      "display-name": "Anorthite (CaAl₂Si₂O₈)",
-      "description": "A calcium aluminum silicate mineral found in lunar rocks, used as a source of aluminum and as a component in the production of ceramics and glass."
+      "display": "Anorthite",
+      "description": "A calcium aluminum silicate mineral (CaAl₂Si₂O₈) found in lunar rocks, used as a source of aluminum and as a component in the production of ceramics and glass."
     },
     {
       "name": "olivine",
-      "display-name": "Olivine ((Mg,Fe)₂SiO₄)",
-      "description": "A magnesium iron silicate mineral commonly found in lunar basalts, used in various industrial applications and as a potential source of iron and magnesium."
+      "display": "Olivine",
+      "description": "A magnesium iron silicate mineral ((Mg,Fe)₂SiO₄) commonly found in lunar basalts, used in various industrial applications and as a potential source of iron and magnesium."
     },
     {
       "name": "pyroxene",
-      "display-name": "Pyroxene ((Ca,Mg,Fe,Al)₂(Si,Al)₂O₆)",
-      "description": "A group of silicate minerals found in lunar rocks, used in ceramics and as a source of magnesium and iron."
+      "display": "Pyroxene",
+      "description": "A group of silicate minerals ((Ca,Mg,Fe,Al)₂(Si,Al)₂O₆) found in lunar rocks, used in ceramics and as a source of magnesium and iron."
     },
     {
       "name": "aluminum",
-      "display-name": "Aluminum (Al)",
-      "description": "A lightweight, silver-white metal derived from minerals like anorthite, used in the construction of spacecraft and solar panel frames."
+      "display": "Aluminum",
+      "description": "A lightweight, silver-white metal (Al) derived from minerals like anorthite, used in the construction of spacecraft and solar panel frames."
     },
     {
       "name": "silicon",
-      "display-name": "Silicon (Si)",
-      "description": "A semiconductor material derived from silica, used in the production of solar cells and electronic devices."
+      "display": "Silicon",
+      "description": "A semiconductor material (Si) derived from silica, used in the production of solar cells and electronic devices."
     },
     {
       "name": "titanium",
-      "display-name": "Titanium (Ti)",
-      "description": "A strong, lightweight metal derived from minerals like ilmenite, used in aerospace and other high-performance applications."
+      "display": "Titanium",
+      "description": "A strong, lightweight metal (Ti) derived from minerals like ilmenite, used in aerospace and other high-performance applications."
     },
     {
       "name": "iron",
-      "display-name": "Iron (Fe)",
-      "description": "A common metal found in minerals like ilmenite and olivine, used in construction, machinery, and various industrial applications."
+      "display": "Iron",
+      "description": "A common metal (Fe) found in minerals like ilmenite and olivine, used in construction, machinery, and various industrial applications."
     },
     {
       "name": "calcium",
-      "display-name": "Calcium (Ca)",
-      "description": "An alkaline earth metal found in minerals like anorthite, used in the production of cement, steel, and other materials."
+      "display": "Calcium",
+      "description": "An alkaline earth metal (Ca) found in minerals like anorthite, used in the production of cement, steel, and other materials."
     },
     {
       "name": "magnesium",
-      "display-name": "Magnesium (Mg)",
-      "description": "A lightweight metal found in minerals like olivine, used in alloys, electronics, and as a reducing agent in the production of titanium."
+      "display": "Magnesium",
+      "description": "A lightweight metal (Mg) found in minerals like olivine, used in alloys, electronics, and as a reducing agent in the production of titanium."
+    },
+    {
+      "name": "oxygen",
+      "display": "Oxygen",
+      "description": "A colorless, odorless reactive gas (O₂) that is essential for life on Earth and a key component in various industrial processes."
     }
   ]
 }

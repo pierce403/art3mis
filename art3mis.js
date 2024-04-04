@@ -18,6 +18,9 @@ function loadMaterials() {
         .then(data => {
             knownMaterials = data.materials;
             displayMaterials(); // Display the materials once they are loaded
+            // display how many materials were loaded to the console
+            console.log(`Loaded ${knownMaterials.length} materials`);
+
         })
         .catch(error => console.error('Error loading materials:', error));
 }
@@ -29,6 +32,8 @@ function loadMachines() {
         .then(data => {
             knownMachines = data.machines;
             displayMachines(); // Display the machines once they are loaded
+            // display how many machines were loaded to the console
+            console.log(`Loaded ${knownMachines.length} machines`);
         })
         .catch(error => console.error('Error loading machines:', error));
 }
@@ -46,7 +51,7 @@ function displayMaterials() {
         // Get "unit" field from the json, assume kg if not present
         // For example:  regolith (100 kg)
         if (ownedMaterials[material.name] > 0) {
-            card.innerHTML = `<h3>${material.name} (${ownedMaterials[material.name]} ${material.unit || 'kg'})</h3>`;
+            card.innerHTML = `<h3>${material.display} (${ownedMaterials[material.name]} ${material.unit || 'kg'})</h3><p>${material.description}</p>`;
             materialsGrid.appendChild(card);
         }
     });
@@ -105,7 +110,7 @@ function formatMaterials(materials) {
 
 // Load materials and machines when the page is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    loadMaterials();
+    loadMaterials()
     loadMachines();
 });
 

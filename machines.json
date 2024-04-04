@@ -2,7 +2,7 @@
   "machines": [
     {
       "name": "regolith-collector",
-      "display-name": "Regolith Collector",
+      "display": "Regolith Collector",
       "description": "A machine used to collect lunar regolith from the Moon's surface.",
       "inputs": [],
       "outputs": [
@@ -16,7 +16,7 @@
     },
     {
       "name": "regolith-sorter",
-      "display-name": "Regolith Sorter",
+      "display": "Regolith Sorter",
       "description": "A machine that sorts lunar regolith into its constituent materials.",
       "inputs": [
         {
@@ -51,7 +51,7 @@
     },
     {
       "name": "solar-panel-fabricator",
-      "display-name": "Solar Panel Fabricator",
+      "display": "Solar Panel Fabricator",
       "description": "A machine that manufactures solar panels using extracted materials.",
       "inputs": [
         {
@@ -74,7 +74,7 @@
     },
     {
       "name": "silica-blast-furnace",
-      "display-name": "Silica Blast Furnace",
+      "display": "Silica Blast Furnace",
       "description": "A furnace that heats silica to extract silicon and oxygen.",
       "inputs": [
         {
@@ -97,7 +97,7 @@
     },
     {
       "name": "ilmenite-blast-furnace",
-      "display-name": "Ilmenite Blast Furnace",
+      "display": "Ilmenite Blast Furnace",
       "description": "A furnace that heats ilmenite to extract iron, titanium, and oxygen.",
       "inputs": [
         {
@@ -124,7 +124,7 @@
     },
     {
       "name": "anorthite-blast-furnace",
-      "display-name": "Anorthite Blast Furnace",
+      "display": "Anorthite Blast Furnace",
       "description": "A furnace that heats anorthite to extract calcium, aluminum, silicon, and oxygen.",
       "inputs": [
         {
@@ -155,7 +155,7 @@
     },
     {
       "name": "olivine-blast-furnace",
-      "display-name": "Olivine Blast Furnace",
+      "display": "Olivine Blast Furnace",
       "description": "A furnace that heats olivine to extract magnesium, iron, silicon, and oxygen.",
       "inputs": [
         {
@@ -186,7 +186,7 @@
     },
     {
       "name": "pyroxene-blast-furnace",
-      "display-name": "Pyroxene Blast Furnace",
+      "display": "Pyroxene Blast Furnace",
       "description": "A furnace that heats pyroxene to extract calcium, magnesium, iron, aluminum, silicon, and oxygen.",
       "inputs": [
         {
